@@ -1,0 +1,26 @@
+{
+  "name": "magicapp-client",
+  "version": "0.0.2",
+  "description": "MAGICapp API client for javascript",
+  "main": "./dist/index.js",
+  "repository": "https://github.com/ebmeds/magicapp-client",
+  "author": "Henri Kuittinen",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d dist --no-comments",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
+    "babel-preset-babili": "^0.1.4",
+    "babel-preset-es2017": "^6.24.1",
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2"
+  }
+}
