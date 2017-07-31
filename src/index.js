@@ -117,35 +117,4 @@ module.exports = class MagicAppImport {
   async getPicoCodesByPicoId(id) {
     return await this.getRaw(`picos/${id}/codes`);
   }
-
-  /**
-   * A Helper to get all DEO specific fields from a guideline
-   * @param guidelineShortName
-   * @param user
-   * @param pass
-   * @returns {Promise.<{}>}
-   */
-  static async getFields(guidelineShortName, user = process.env.MAGIC_USER, pass = process.env.MAGIC_PASS) {
-    let magicFields = {};
-
-    // Init the MagicAppImport class
-    let magicApp = new MagicAppImport(user, pass);
-
-    // Do the authentication and wait for it
-    await magicApp.authenticate();
-
-    // Get the latest published guideline by short name
-    magicFields.guideline = await magicApp.getLatestGuidelineByShortname(guidelineShortName);
-
-    // Get all Picos from the guideline
-    magicFields.guideline.picos = await magicApp.getPicosByGuidelineId(magicFields.guideline.guidelineId);
-
-    // Get all Pico codes from the Pico
-    for(let pico of magicFields.guideline.picos) {
-      pico.codes = await magicApp.getPicoCodesByPicoId(pico.picoId)
-    }
-
-    return magicFields;
-  }
-
 };
