@@ -11,13 +11,15 @@ module.exports = class MagicAppImport {
    * Use the regular username and password for MAGICApp
    * @param username MAGICApp username
    * @param password MAGICApp password
-   * @param url MAGICApp url (obsolete soon)
+   * @param url MAGICApp url
+   * @param authUrl MAGICApp authentication url
    */
-  constructor(username, password, url = 'https://www.magicapp.org:443/api/v1/') {
+  constructor(username, password, url = 'https://api.magicapp.org/api/v1/', authUrl = 'https://api.magicapp.org/authenticate') {
     this.username = username;
     this.password = password;
     this.jar = request.jar();
     this.url = url;
+    this.authUrl = authUrl;
   };
 
   /**
@@ -26,7 +28,7 @@ module.exports = class MagicAppImport {
    */
   async getXSRF() {
     await request({
-      uri: 'https://www.magicapp.org/authenticate',
+      uri: this.authUrl,
       jar: this.jar,
       method: 'OPTIONS'
     });
@@ -53,7 +55,7 @@ module.exports = class MagicAppImport {
 
     // Do the actual authentication and get the session cookie
     await request({
-      uri: 'https://www.magicapp.org/authenticate',
+      uri: this.authUrl,
       method: 'POST',
       jar: this.jar,
       headers: {
