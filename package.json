@@ -19,8 +19,6 @@
     "babel-plugin-transform-es2015-parameters": "^6.24.1",
     "babel-plugin-transform-strict-mode": "^6.24.1",
     "babel-preset-babili": "^0.1.4",
-    "babel-preset-es2017": "^6.24.1",
-    "chai": "^4.1.0",
-    "mocha": "^3.4.2"
+    "babel-preset-es2017": "^6.24.1"
   }
 }
