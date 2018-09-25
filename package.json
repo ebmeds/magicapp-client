@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src -d dist --no-comments",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "dependencies": {
     "request": "^2.81.0",
