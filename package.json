@@ -1,6 +1,6 @@
 {
   "name": "magicapp-client",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "MAGICapp API client for javascript",
   "main": "./dist/index.js",
   "repository": "https://github.com/ebmeds/magicapp-client",
